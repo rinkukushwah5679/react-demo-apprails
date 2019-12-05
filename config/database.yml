@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  secure_auth: false
+  database: react_app
+  username: root
+  password: root
+  host: localhost
+
+development:
+  <<: *default
+
+testing:
+  <<: *default
+
+production:
+  <<: *default
