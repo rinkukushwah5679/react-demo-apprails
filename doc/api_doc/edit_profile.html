@@ -1,0 +1,141 @@
+api :POST, '/api/v1/update_account', "Edit Profile"
+error 401, "Unauthorized"
+error 404, "Page not found"
+error 403, "Something went wrong"
+error 500, "Internal Server Error"
+
+example <<-TEXT
+
+Edit Profile API
+
+TEXT
+
+example <<-TEXT
+
+Api Details:
+---------------------------------------
+  {
+    api_name: Edit Profile,
+    method: POST,
+    version: v1,
+    path: /api/v1/update_account,
+    host: http://localhost:3000
+  }
+
+TEXT
+
+example <<-TEXT
+
+Header Body:
+---------------------------------------
+  {
+    User-Token: nFsvWbmoxx6-n2jHBLKv
+  }
+
+TEXT
+
+example <<-TEXT
+
+Request Body:
+---------------------------------------
+  {
+    "email" : "rink12u@bitterntec.com",
+    "password" : "12345678",
+    "first_name" : "Rinku",
+    "last_name" : "Kushwah",
+    "image" : "image comes in multipart. Comes from file field",
+    "address" : "Nirman vihar",
+    "country" : "india",
+    "phone" : "8010624218"
+  }
+
+TEXT
+
+example <<-TEXT
+
+GuideLIne For Request Body:
+---------------------------------------
+
+
+1- You can update user attributes as per required.
+2- Image should be in multi part
+3- If no need to update password, email, username or any other attribute so do not send in request body.
+
+TEXT
+
+example <<-TEXT
+
+Response Body:
+---------------------------------------
+    
+  {
+    "status": 200,
+    "data": {
+        "user": {
+            "email": "rink12u@bitterntec.com",
+            "first_name": "Rinku",
+            "last_name": "Kushwah",
+            "image": "image comes in multipart. Comes from file field",
+            "address": "Nirman vihar",
+            "country": "india",
+            "phone": "8010624218",
+            "id": 3,
+            "authentication_token": "nFsvWbmoxx6-n2jHBLKv",
+            "created_at": "2019-12-06T08:09:32.997Z",
+            "updated_at": "2019-12-06T10:18:43.176Z"
+        }
+    },
+    "message": "User Profile Successfully Updated"
+  }    
+
+TEXT
+
+example <<-TEXT
+
+Unauthorized:
+---------------------------------------
+
+
+   Bellow response you will get when you don't passed the authentication token in header or authentication token does not match with the user authentication token in db.
+
+    {
+        "error": "401 Unauthorized!"
+    }
+
+  Remember You should pass the token of the user who's profile you want to update.
+
+
+
+TEXT
+
+example <<-TEXT
+
+Required Header
+---------------------------------------
+
+Content-Type: required
+User-Token: required
+
+TEXT
+
+example <<-TEXT
+
+Summery:
+---------------------------------------
+
+This api is used for profile update. You can refer profile update screen as well 
+
+
+TEXT
+
+example <<-TEXT
+
+SnapShots
+---------------------------------------
+
+Request Body:
+
+
+
+
+TEXT

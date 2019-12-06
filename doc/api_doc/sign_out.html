@@ -1,0 +1,85 @@
+api :DELETE, '/api/v1/sign_out', "Sign Out"
+error 401, "Unauthorized"
+error 404, "Page not found"
+error 403, "Something went wrong"
+error 500, "Internal Server Error"
+
+example <<-TEXT
+
+Sign Out API
+
+TEXT
+
+example <<-TEXT
+
+Api Details:
+---------------------------------------
+  {
+    api_name: sign out,
+    method: Delete,
+    version: v1,
+    path: /api/v1/sign_out,
+    host: http://localhost:3000
+  }
+
+TEXT
+
+example <<-TEXT
+
+Header Body:
+---------------------------------------
+  {
+    Content-Type: application/json
+    User-Token: nTgBRwsVxv7aX8SSadTY
+  }
+
+TEXT
+
+example <<-TEXT
+
+Response Body:
+---------------------------------------
+
+    {
+        "status": 200,
+        "data": null,
+        "message": "Successfuly Log out"
+    }
+    
+TEXT
+
+example <<-TEXT
+
+Unauthorized:
+====================================================================================
+
+  Bellow response you will get when you don't passed the authentication token in header or authentication token does not match with the user authentication token in db.
+
+    {
+        "error": "401 Unauthorized!"
+    }
+
+  Remember when you logout successfully the you token change instantly. Please user new token after signout. New token you can get after login.
+
+TEXT
+
+example <<-TEXT
+
+Required Header
+======================================================================================
+
+Content-Type: required
+User-Token: required
+
+TEXT
+
+example <<-TEXT
+
+Summery:
+=====================================================================================
+
+This api is used for sign out. You can refer menu screen as well 
+
+You can integrate this api when you click on logout link bottom of the menu bar.
+
+TEXT
