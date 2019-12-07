@@ -1,0 +1,108 @@
+api :GET, '/api/v1/users', "List Of All User"
+error 401, "Unauthorized"
+error 404, "Page not found"
+error 403, "Something went wrong"
+error 500, "Internal Server Error"
+
+example <<-TEXT
+
+List Of All User API
+
+TEXT
+
+example <<-TEXT
+
+Api Details:
+---------------------------------------
+  {
+    api_name: List Of All User,
+    method: Get,
+    version: v1,
+    path: /api/v1/users,
+    host: http://react-demo-apprails.herokuapp.com
+  }
+
+TEXT
+
+example <<-TEXT
+
+Header Body:
+---------------------------------------
+  {
+    Content-Type: application/json
+    User-Token: nTgBRwsVxv7aX8SSadTY
+  }
+
+TEXT
+
+example <<-TEXT
+
+Url For search by username:
+-----------------------------
+
+/api/v1/users?q=10212747469584515_37e4
+
+TEXT
+
+
+example <<-TEXT
+
+Response Body:
+---------------------------------------
+
+{
+    "status": 200,
+    "data": {
+        "users": [
+            {
+                "id": 2,
+                "email": "rinku@bitterntec.com",
+                "created_at": "2019-12-06T08:08:53.674Z",
+                "updated_at": "2019-12-06T08:08:53.674Z",
+                "authentication_token": "6_DJUWZmXiSJPrChzPrn",
+                "first_name": null,
+                "last_name": null,
+                "address": null,
+                "image": null,
+                "phone": null,
+                "country": null
+            },
+            {
+                "id": 3,
+                "email": "rink12u@bitterntec.com",
+                "created_at": "2019-12-06T08:09:32.997Z",
+                "updated_at": "2019-12-06T10:18:43.176Z",
+                "authentication_token": "nFsvWbmoxx6-n2jHBLKv",
+                "first_name": "Rinku",
+                "last_name": "Kushwah",
+                "address": "Nirman vihar",
+                "image": "image comes in multipart. Comes from file field",
+                "phone": "8010624218",
+                "country": "india"
+            }
+        ]
+    },
+    "message": "Users List"
+}
+    
+TEXT
+
+
+example <<-TEXT
+
+Required Header
+---------------------------------------
+
+Content-Type: required
+
+TEXT
+
+example <<-TEXT
+
+Summery:
+---------------------------------------
+
+This api is used for list of all user. You can refer Explore screen as well 
+
+
+TEXT
