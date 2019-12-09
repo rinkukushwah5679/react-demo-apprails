@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   before_save :ensure_authentication_token
+  mount_uploader :image, UserUploader
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
