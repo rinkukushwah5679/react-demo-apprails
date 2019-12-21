@@ -1,6 +1,6 @@
 class Api::V1::SessionsController < Api::V1::ApiController
 	skip_before_action  :verify_authenticity_token
-	before_action :authenticate_user!, except: [:create]
+	before_action :authenticate_user!, except: [:create, :index]
   eval(IO.read('doc/api_doc/users.html'), binding) 
   def index
     @users = User.all
