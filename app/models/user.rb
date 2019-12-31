@@ -10,7 +10,16 @@ class User < ApplicationRecord
       self.authentication_token = generate_authentication_token
     end
   end
-
+  def regenerate_password
+     r = [ ]
+    while r.length < 6
+      v = rand(7)
+      r << v unless r.include? v
+    end
+    random = r.join(",").gsub(",","")
+    self.update_attributes(:password=>random, :password_confirmation => random)
+    random
+  end
   private
   def generate_authentication_token
     loop do

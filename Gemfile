@@ -66,3 +66,4 @@ gem 'devise'
 gem 'apipie-rails'
 gem 'rack-cors'
 gem 'carrierwave'
+gem "letter_opener"
