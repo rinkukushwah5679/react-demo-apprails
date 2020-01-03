@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   before_save :ensure_authentication_token
   mount_uploader :image, UserUploader
+  has_many :posts
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token

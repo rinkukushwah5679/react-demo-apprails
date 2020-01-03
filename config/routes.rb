@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :posts do
+    collection do
+      post :create_post
+    end
+  end
   apipie
   get 'home/index'
   devise_for :users
