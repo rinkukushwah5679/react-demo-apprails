@@ -3,13 +3,17 @@ Rails.application.routes.draw do
     collection do
       post :create_post
     end
+    member do
+      post :update_post
+      get :delete_post
+    end
   end
   apipie
   get 'home/index'
   devise_for :users
   root 'home#index'
 
-  namespace :api do
+  namespace :api, :defaults => {:formant => :json} do
     namespace :v1 do
       devise_scope :user do
         post "/sign_in", :to => 'sessions#create'

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :update_post, :delete_post]
   skip_before_action  :verify_authenticity_token 
 
   # GET /posts
@@ -22,6 +22,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    render json: @post
   end
 
   # POST /posts
@@ -60,15 +61,24 @@ class PostsController < ApplicationController
       end
     end
   end
+  def update_post
+    @post.update(post_params)
+    render json:  @post
+  end
 
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      # format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def delete_post
+    @post.destroy
+    head :ok
   end
 
   private

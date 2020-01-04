@@ -26,6 +26,7 @@ class Api::V1::RegistrationsController < Api::V1::ApiController
 			user.address = params[:address] if params[:address].present?
 			user.country = params[:country] if params[:country].present?
 			user.phone = params[:phone] if params[:phone].present?
+      user.dob = params[:dob] if params[:dob].present?
 			if user.save!
 				return render json: {status: 200, data: {user: user}, :message =>"User Profile Successfully Updated"} 
       else
@@ -100,6 +101,6 @@ class Api::V1::RegistrationsController < Api::V1::ApiController
   end
    
   def registration_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :image, :phone, :address, :country)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :image, :phone, :address, :country, :dob)
   end
 end
