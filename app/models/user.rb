@@ -2,10 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
   before_save :ensure_authentication_token
   mount_uploader :image, UserUploader
+  enum role: [:normal, :trader, :admin]
   has_many :posts
+  after_initialize :set_default_role, if: :new_record?
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
@@ -22,6 +24,9 @@ class User < ApplicationRecord
     random
   end
   private
+  def set_default_role
+    self.role ||= :normal
+  end
   def generate_authentication_token
     loop do
       token = Devise.friendly_token
