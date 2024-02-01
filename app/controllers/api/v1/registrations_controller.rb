@@ -7,7 +7,6 @@ class Api::V1::RegistrationsController < Api::V1::ApiController
     if user.save
       return render json: {status: 200, data: {user: user}, :message =>"Successfuly Signup"} 
     else
-      warden.custom_failure!
       return render json: {status: 401, data: {user: nil, errors: user.errors}, :message =>"SignUp Rollback"} 
     end
   end
